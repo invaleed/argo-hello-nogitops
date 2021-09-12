@@ -19,6 +19,6 @@ spec:
         name: demo
         env:
         - name: ENVIRONMENT
-          value: e2e
+          value: prod
         ports:
         - containerPort: 80
