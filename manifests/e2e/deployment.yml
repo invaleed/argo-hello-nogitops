@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: demo
-  namespace: nogitops-e2e
 spec:
   replicas: 2
   revisionHistoryLimit: 3
