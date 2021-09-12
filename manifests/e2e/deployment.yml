@@ -15,7 +15,7 @@ spec:
         app: demo
     spec:
       containers:
-      - image: invaleed/argo-hello:commitid
+      - image: invaleed/argo-hello-nogitops:commitid
         name: demo
         env:
         - name: ENVIRONMENT
