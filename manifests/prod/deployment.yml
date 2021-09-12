@@ -1,6 +1,5 @@
 apiVersion: apps/v1
 kind: Deployment
-namespace: nogitops-prod
 metadata:
   name: demo
 spec:
