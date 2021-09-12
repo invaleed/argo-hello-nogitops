@@ -17,16 +17,16 @@ pipeline {
         GIT_CREDS = credentials('git')
       }
       steps {
-		  sh "git clone https://$GIT_CREDS_USR:$GIT_CREDS_PSW@github.com/invaleed/argo-hello-nogitops.git"
-		  sh "cd ./manifests/e2e && sed -i 's/commitid/${env.GIT_COMMIT}/g' deployment.yml "
-          sh "kubectl apply -f deployment.yml && kubectl apply -f service.yml"
+	sh "git clone https://$GIT_CREDS_USR:$GIT_CREDS_PSW@github.com/invaleed/argo-hello-nogitops.git"
+	sh "cd ./argo-hello-nogitops/manifests/e2e && sed -i 's/commitid/${env.GIT_COMMIT}/g' deployment.yml "
+        sh "kubectl apply -f deployment.yml && kubectl apply -f service.yml"
       }
     }
 
     stage('Deploy to Prod') {
       steps {
-		  sh "cd ../prod && sed -i 's/commitid/${env.GIT_COMMIT}/g' deployment.yml "
-          sh "kubectl apply -f deployment.yml && kubectl apply -f service.yml"
+	sh "cd ../prod && sed -i 's/commitid/${env.GIT_COMMIT}/g' deployment.yml "
+        sh "kubectl apply -f deployment.yml && kubectl apply -f service.yml"
       }
     }
   }
