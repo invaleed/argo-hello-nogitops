@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+namespace : nogitops-e2e
+metadata:
+  name: demo
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: demo
+  type: LoadBalancer
