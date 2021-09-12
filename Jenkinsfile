@@ -20,8 +20,9 @@ pipeline {
 	sh "git clone https://$GIT_CREDS_USR:$GIT_CREDS_PSW@github.com/invaleed/argo-hello-nogitops.git"
 	sh "pwd"
 	sh "cd argo-hello-nogitops/manifests/e2e/ && sed -i 's/commitid/${env.GIT_COMMIT}/g' deployment.yml "
-        sh "kubectl apply -f /var/lib/jenkins/workspace/argo-hello-nogitops/argo-hello-nogitops/manifests/e2e/deployment.yml"
-	sh "kubectl apply -f /var/lib/jenkins/workspace/argo-hello-nogitops/argo-hello-nogitops/manifests/e2e/service.yml"
+	sh " ls -al"
+        sh "kubectl apply -f deployment.yml"
+	sh "kubectl apply -f service.yml"
       }
     }
 
