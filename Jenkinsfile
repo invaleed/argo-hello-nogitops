@@ -18,11 +18,9 @@ pipeline {
       }
       steps {
 	sh "git clone https://$GIT_CREDS_USR:$GIT_CREDS_PSW@github.com/invaleed/argo-hello-nogitops.git"
-	sh "pwd"
 	sh "sed -i 's/commitid/${env.GIT_COMMIT}/g' manifests/e2e/deployment.yml"
-	sh " ls -al manifests/e2e/"
-        sh "kubectl apply -f manifests/e2e/deployment.yml"
-	sh "kubectl apply -f manifests/e2e/service.yml"
+        sh "kubectl apply -f manifests/e2e/deployment.yml -n nogitops-e2e"
+	sh "kubectl apply -f manifests/e2e/service.yml -n nogitops-e2e"
       }
     }
 
