@@ -26,7 +26,7 @@ pipeline {
 
     stage('Deploy to Prod') {
       steps {
-	sh "sed -i 's/commitid/${env.GIT_COMMIT}/g' manifests/e2e/deployment.yml"
+	sh "sed -i 's/commitid/${env.GIT_COMMIT}/g' manifests/prod/deployment.yml"
         sh "kubectl apply -f manifests/prod/deployment.yml -n nogitops-prod"
 	sh "kubectl apply -f manifests/prod/service.yml -n nogitops-prod"
       }
